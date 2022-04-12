@@ -9,18 +9,19 @@
 template<uint N = 64>
 class cone_approx
 {
-    float side_vertices[6 * (N + 1)];
-    float bottom_vertices[6 * N];
-    uint side_indices[3 * N];
+    inline static float side_vertices[6 * (N + 1)];
+    inline static float bottom_vertices[6 * N];
+    inline static uint side_indices[3 * N];
 
-    uint side_vbo;
-    uint bottom_vbo;
-    uint side_ebo;
+    inline static uint side_vbo = 0;
+    inline static uint bottom_vbo = 0;
+    inline static uint side_ebo = 0;
 
     uint side_vao, bottom_vao;
 
-    void generate_vertices();
 public:
+    static void generate_vertices();
+
     cone_approx();
 
     ~cone_approx();
@@ -31,7 +32,6 @@ public:
 template<uint N>
 cone_approx<N>::cone_approx()
 {
-    generate_vertices();
     glGenVertexArrays(1, &side_vao);
 
     glBindVertexArray(side_vao);

@@ -182,6 +182,7 @@ int main()
     //---------------------
 
     // Cone definition
+    cone_approx<>::generate_vertices();
     cone_approx<> cone;
 
     glm::mat4 cone_model = glm::mat4(1.0f);
